@@ -15,24 +15,24 @@
     <p id='test'>test</p>
     <script>
       var pos = 1;
-      // function add(a, f){
-      //   a%10 !== 0 ? setTimeout(function(){ f(a+1); add(a+1); }, 100) : void(0);
-      // }
-      window.onscroll = function() {
-        var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-        pos<= 50 && pos>=1?
-        scrolled>=1?
-        pos+=0.25 :
-        pos-=0.25 :
-        pos=1;
-        console.log(pos);
-        document.body.style.background = "url('/drawcarfilm/"+(pos<10?'000'+(Math.floor(pos)<1?1:Math.floor(pos)):'00'+Math.floor(pos) )+".jpg') no-repeat center center";
+      function run(p){
+        document.body.style.background = "url('/drawcarfilm/"+(p<10?'000'+p:'00'+p)+".jpg') no-repeat center center";
         var bx = [  '-webkit-background-size',
         '-moz-background-size','-o-background-size','background-size'];
         for(var i in bx){
           document.body.style[bx[i]] = 'cover';
         }
       }
+
+      document.body.addEventListener("keypress", function() {
+        var t=0, inter =
+        setInterval(function(){
+          t>10:clearInterval(inter):t++;
+          pos< 50 && pos>1?pos++:pos=1;
+          pos++;
+          run(pos);
+        },100);
+      }, false);
     </script>
   </body>
 </html>
