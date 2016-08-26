@@ -8,11 +8,16 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        margin: 0;
+      }
+      .gain{
+        width: 100%;
+        height: 100%;
       }
     </style>
   </head>
   <body>
-    <p id='test'>test</p>
+    <div id='gain' class="gain"></div>
     <script>
       var pos = 1;
       function run(p){
@@ -23,16 +28,17 @@
           document.body.style[bx[i]] = 'cover';
         }
       }
+      setInterval(function(){
+        document.getElementById('gain').style.background = 'url("http://api.thumbr.it/whitenoise-40x40.png?background=ffffff00&noise=626262&density='+Math.floor(Math.random()*120)+'&opacity=15") repeat';
+      }, 40)
 
-      document.body.addEventListener("keypress", function() {
-        var t=0, inter =
-        setInterval(function(){
-          t>10:clearInterval(inter):t++;
-          pos< 50 && pos>1?pos++:pos=1;
-          pos++;
+
+      var inter = setInterval(function(){
+        if(Math.random()>0.8)    {
+          pos< 50 && pos>=1?pos++:pos=1;
           run(pos);
-        },100);
-      }, false);
+        }
+      },800);
     </script>
   </body>
 </html>
