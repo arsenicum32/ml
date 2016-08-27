@@ -1,6 +1,8 @@
 <html>
   <head>
     <title>drawcar</title>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Marck+Script|Underdog" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <style>
       body{
         background: url('/drawcarfilm/0001.jpg') no-repeat center center;
@@ -10,18 +12,17 @@
         background-size: cover;
         margin: 0;
       }
-      .gain{
-        width: 100%;
-        height: 100%;
-      }
     </style>
   </head>
   <body>
-    <div id='gain' class="gain"></div>
+    <div id='gain' class="gain">
+      <h1> <span class="c">по</span><span class="a">к</span><span class="c">раск</span><span class="b">а </span><span class="a">в</span><span class="c">аш</span><span class="a">е</span><span class="b">г</span><span class="c">о </span><span class="a">авто </span><span class="b">жидкой </span><span class="c">резиной</span></h1>
+<div class="action"><a href="#">смотреть ►</a><a href="#">записаться на покраску</a></div>
+    </div>
     <script>
       var pos = 1;
-      function run(p){
-        document.body.style.background = "url('/drawcarfilm/"+(p<10?'000'+p:'00'+p)+".jpg') no-repeat center center";
+      function run(p,y){
+        document.body.style.background = "url('/drawcarfilm/"+(p<10?'000'+p:'00'+p)+".jpg') no-repeat 50% " + (y + "%"||"50%");
         var bx = [  '-webkit-background-size',
         '-moz-background-size','-o-background-size','background-size'];
         for(var i in bx){
@@ -33,12 +34,18 @@
       }, 40)
 
 
-      var inter = setInterval(function(){
-        if(Math.random()>0.8)    {
-          pos< 50 && pos>=1?pos++:pos=1;
-          run(pos);
-        }
-      },800);
+      document.body.addEventListener('mousemove', function(e){
+        run(
+          Math.floor(e.clientX / window.innerWidth * 50),
+          Math.floor(e.clientY / window.innerHeight * 50)
+        );
+      },false)
+      // var inter = setInterval(function(){
+      //   if(Math.random()>0.8)    {
+      //     pos< 50 && pos>=1?pos++:pos=1;
+      //     run(pos);
+      //   }
+      // },800);
     </script>
   </body>
 </html>
